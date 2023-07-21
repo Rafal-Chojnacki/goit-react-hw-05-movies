@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import css from 'app.module.css'
 import { Home } from './Home';
 import { Movies } from './Movies';
+import { MoviesDetails } from './MovieDetails';
 
 
 
@@ -28,10 +29,11 @@ export const App = () => {
         </nav>
       </header>
       <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/movies" element={<Movies />} />
-          <Route path="*" element={<Home />} />
-        </Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/movies" element={<Movies />} />
+        <Route path="/movies/:id" element={<MoviesDetails />} />
+        <Route path="*" element={<Home />} />
+      </Routes>
     </div>
   );
 };

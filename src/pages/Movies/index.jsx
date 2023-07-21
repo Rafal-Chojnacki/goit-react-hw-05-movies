@@ -1,3 +1,10 @@
+import { MoviesDetails } from "pages/MovieDetails";
+
 export const Movies = () => {
-    return <h2>Movies Page</h2>;
-  };
+  return (
+    <div>
+      <h2>Movies Page</h2>
+      <MoviesDetails/>
+    </div>
+  );
+};
