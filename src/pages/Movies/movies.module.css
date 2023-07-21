@@ -4,3 +4,12 @@
 .moviesFormInput {
     width: 400px;
 }
+
+.listOfMovies {
+    list-style-type: disc;
+}
+
+.movieElement {
+    font-size: 20px;
+    padding: 5px
+};
