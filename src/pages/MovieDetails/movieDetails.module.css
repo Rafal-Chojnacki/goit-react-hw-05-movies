@@ -1,0 +1,19 @@
+.moviePoster {
+    padding-bottom: 20px;
+    padding-right: 30px;
+    height: 300px;
+}
+
+.movieDetailsBox {
+    display: flex;
+}
+
+.goBackBtn {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.movieInfo {
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}

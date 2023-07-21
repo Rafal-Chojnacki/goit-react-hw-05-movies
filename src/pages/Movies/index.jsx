@@ -1,10 +1,17 @@
-import { MoviesDetails } from "pages/MovieDetails";
+import React from "react";
+import css from "./movies.module.css";
 
 export const Movies = () => {
+  
   return (
     <div>
-      <h2>Movies Page</h2>
-      <MoviesDetails/>
+       <div className={css.moviesFormBox}>
+        <form>
+            <input className={css.moviesFormInput}>
+            </input>
+            <button type="submit">Search</button>
+        </form>
+      </div>
     </div>
   );
 };
