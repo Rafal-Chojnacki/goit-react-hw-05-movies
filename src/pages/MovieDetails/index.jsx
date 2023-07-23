@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { useNavigate } from 'react-router';
+import { useLocation, Link, useNavigate, useParams } from 'react-router-dom';
 import css from './movieDetails.module.css';
 
 export const MoviesDetails = () => {
   const { id } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
+  const location = useLocation(); // Get the location object
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -26,7 +26,11 @@ export const MoviesDetails = () => {
   const navigate = useNavigate();
 
   const goBack = () => {
-    navigate('/'); // Navigate to the Home page
+    if (location.state && location.state.movies) {
+      navigate(-1); // Navigate back
+    } else {
+      navigate('/movies'); // If no search results, go back to Movies component
+    }
   };
 
   const getYearFromDate = dateString => {
@@ -34,7 +38,6 @@ export const MoviesDetails = () => {
     return date.getFullYear();
   };
 
-  console.log(movieDetails);
   return (
     <div>
       <div>
@@ -58,7 +61,7 @@ export const MoviesDetails = () => {
             <h3>
               {movieDetails.title} ({getYearFromDate(movieDetails.release_date)})
             </h3>
-            <p>Popularity : {movieDetails.popularity}</p>
+            <p>Popularity: {movieDetails.popularity}</p>
             <p>{movieDetails.overview}</p>
             {/* Display genres */}
             <p>Genres: {movieDetails.genres.map(genre => genre.name).join(", ")}</p>
@@ -68,6 +71,20 @@ export const MoviesDetails = () => {
           <p>Loading...</p>
         )}
       </div>
+
+      {/* Display search results if available in location state */}
+      {location.state && location.state.movies && (
+        <div>
+          <h2>Search Results:</h2>
+          <ul className={css.listOfMovies}>
+            {location.state.movies.map((movie) => (
+              <li className={css.movieElement} key={movie.id}>
+                <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };
