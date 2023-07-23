@@ -1,11 +1,12 @@
+import React from 'react';
 import { Routes, Route, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import css from 'app.module.css'
+import css from 'app.module.css';
 import { Home } from './Home';
 import { Movies } from './Movies';
 import { MoviesDetails } from './MovieDetails';
-
-
+import { Cast } from './Cast';
+import { Reviews } from './Reviews';
 
 const StyledLink = styled(NavLink)`
   color: black;
@@ -32,6 +33,8 @@ export const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
         <Route path="/movies/:id" element={<MoviesDetails />} />
+        <Route path="/movies/:id/cast" element={<Cast />} />
+        <Route path="/movies/:id/reviews" element={<Reviews />} />
         <Route path="*" element={<Home />} />
       </Routes>
     </div>

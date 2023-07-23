@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useLocation, Link } from 'react-router-dom';
-import { useNavigate } from 'react-router';
+import { useParams, useLocation, Link, NavLink } from 'react-router-dom';
+import { useNavigate} from 'react-router';
+import styled from 'styled-components';
 import css from './movieDetails.module.css';
 
 
+const StyledLink = styled(NavLink)`
+  color: black;
+
+  &.active {
+    color: orange;
+  }
+`;
 
 export const MoviesDetails = () => {
   const { id } = useParams();
@@ -22,11 +30,10 @@ export const MoviesDetails = () => {
         console.error('Error fetching movie details:', error);
       }
     };
-    
+
     fetchMovieDetails();
   }, [id]);
 
-  
   const navigate = useNavigate();
 
   const goBack = () => {
@@ -60,12 +67,15 @@ export const MoviesDetails = () => {
         {movieDetails ? (
           <div className={css.movieInfo}>
             <h3>
-              {movieDetails.title} ({getYearFromDate(movieDetails.release_date)})
+              {movieDetails.title} ({getYearFromDate(movieDetails.release_date)}
+              )
             </h3>
             <p>Popularity: {movieDetails.popularity}</p>
             <p>{movieDetails.overview}</p>
             {/* Display genres */}
-            <p>Genres: {movieDetails.genres.map(genre => genre.name).join(", ")}</p>
+            <p>
+              Genres: {movieDetails.genres.map(genre => genre.name).join(', ')}
+            </p>
             {/* Add more movie details as needed */}
           </div>
         ) : (
@@ -73,12 +83,11 @@ export const MoviesDetails = () => {
         )}
       </div>
 
-      {/* Display search results if available in location state */}
       {location.state && location.state.movies && (
         <div>
           <h2>Search Results:</h2>
           <ul className={css.listOfMovies}>
-            {location.state.movies.map((movie) => (
+            {location.state.movies.map(movie => (
               <li className={css.movieElement} key={movie.id}>
                 <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
               </li>
@@ -86,7 +95,21 @@ export const MoviesDetails = () => {
           </ul>
         </div>
       )}
+     
+      <nav className={css.homeNav}>
+        <ul className={css.addInfoBox}>
+          <li>
+            <StyledLink className={css.homeLink} to="/movies/:id/cast" end>
+              Cast
+            </StyledLink>
+          </li>
+          <li>
+            <StyledLink className={css.homeLink} to="/movies/:id/reviews">
+              Reviews
+            </StyledLink>
+          </li>
+        </ul>
+      </nav>
     </div>
   );
 };
-

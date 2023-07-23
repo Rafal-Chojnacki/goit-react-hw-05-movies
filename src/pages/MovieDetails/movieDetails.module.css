@@ -17,3 +17,10 @@
     color: black;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+.homeNav {
+    border-top: 3px solid gray;
+    border-bottom: 3px solid gray;
+    display: flex;
+    flex-direction: column;
+}
