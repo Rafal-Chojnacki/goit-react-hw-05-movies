@@ -20,7 +20,8 @@ export const Movies = () => {
       );
       const data = await response.json();
       setMovies(data.results);
-      localStorage.setItem('searchResults', JSON.stringify(data.results)); // Store search results in localStorage
+      console.log(data.results);
+      localStorage.setItem('searchResults', JSON.stringify(data.results));
       history(`/movies`); // Redirect to the Movies component
     } catch (error) {
       console.error('Error fetching movie data:', error);

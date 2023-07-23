@@ -65,17 +65,15 @@ export const MoviesDetails = () => {
 
         {movieDetails ? (
           <div className={css.movieInfo}>
-            <h3>
+            <h1>
               {movieDetails.title} ({getYearFromDate(movieDetails.release_date)}
               )
-            </h3>
+            </h1>
             <p>Popularity: {movieDetails.popularity}</p>
+            <h2>Overview</h2>
             <p>{movieDetails.overview}</p>
-            {/* Display genres */}
-            <p>
-              Genres: {movieDetails.genres.map(genre => genre.name).join(', ')}
-            </p>
-            {/* Add more movie details as needed */}
+            <h3>Geners</h3>
+            <p>{movieDetails.genres.map(genre => genre.name).join(', ')}</p>
           </div>
         ) : (
           <p>Loading...</p>
