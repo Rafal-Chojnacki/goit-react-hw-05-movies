@@ -32,9 +32,10 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
-        <Route path="/movies/:id" element={<MoviesDetails />} />
-        <Route path="/movies/:id/cast" element={<Cast />} />
-        <Route path="/movies/:id/reviews" element={<Reviews />} />
+        <Route path="/movies/:id" element={<MoviesDetails />}>
+          <Route path="/movies/:id/cast" element={<Cast />} />
+          <Route path="/movies/:id/reviews" element={<Reviews />} />
+        </Route>
         <Route path="*" element={<Home />} />
       </Routes>
     </div>

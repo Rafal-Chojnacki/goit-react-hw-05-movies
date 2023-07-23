@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useLocation, Link, NavLink } from 'react-router-dom';
-import { useNavigate} from 'react-router';
+import { Outlet, useNavigate } from 'react-router';
 import styled from 'styled-components';
 import css from './movieDetails.module.css';
-
 
 const StyledLink = styled(NavLink)`
   color: black;
@@ -95,21 +94,32 @@ export const MoviesDetails = () => {
           </ul>
         </div>
       )}
-     
+
       <nav className={css.homeNav}>
         <ul className={css.addInfoBox}>
           <li>
-            <StyledLink className={css.homeLink} to="/movies/:id/cast" end>
+            <StyledLink
+              className={css.homeLink}
+              to={{
+                pathname: `/movies/${id}/cast`,
+              }}
+            >
               Cast
             </StyledLink>
           </li>
           <li>
-            <StyledLink className={css.homeLink} to="/movies/:id/reviews">
+            <StyledLink
+              className={css.homeLink}
+              to={{
+                pathname: `/movies/${id}/reviews`,
+              }}
+            >
               Reviews
             </StyledLink>
           </li>
         </ul>
       </nav>
+      <Outlet />
     </div>
   );
 };
