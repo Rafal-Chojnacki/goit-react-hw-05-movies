@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useOutletContext } from 'react-router';
 import css from './reviews.module.css';
-import { BsPersonCircle } from 'react-icons/bs'; // Assuming you have imported the BsPersonCircle icon from the react-icons library.
 
 export const Reviews = () => {
   const [movieReviews, setMovieReviews] = useState([]);
@@ -30,16 +29,22 @@ export const Reviews = () => {
         <h2>Reviews</h2>
       </div>
       <div className={css.reviewsBox}>
-        {movieReviews.map((review) => (
-          <div key={review.id}>
-            <ul className={css.listOfReviews}>
-              <li className={css.reviewElement}>
-                <p className={css.authorName}>{review.author}</p>
-                <p className={css.reviewContent}>{review.content}</p>
-              </li>
-            </ul>
+        {movieReviews.length > 0 ? (
+          movieReviews.map((review) => (
+            <div key={review.id}>
+              <ul className={css.listOfReviews}>
+                <li className={css.reviewElement}>
+                  <p className={css.authorName}>{review.author}</p>
+                  <p className={css.reviewContent}>{review.content}</p>
+                </li>
+              </ul>
+            </div>
+          ))
+        ) : (
+          <div>
+            <p>No reviews</p>
           </div>
-        ))}
+        )}
       </div>
     </div>
   );
