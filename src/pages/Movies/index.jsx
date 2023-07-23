@@ -28,9 +28,7 @@ export const Movies = () => {
     }
   };
 
-  useEffect(() => {
-    localStorage.clear();
-  }, []);
+ 
 
   return (
     <div>

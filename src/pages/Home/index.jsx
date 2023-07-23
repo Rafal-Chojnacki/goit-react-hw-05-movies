@@ -6,7 +6,9 @@ import css from './home.module.css';
 export const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
 
-
+ useEffect(() => {
+    localStorage.clear();
+  }, []);
 
   useEffect(() => {
     const fetchTrendingMovies = async () => {

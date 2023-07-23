@@ -44,7 +44,6 @@ export const MoviesDetails = () => {
     return date.getFullYear();
   };
 
-  console.log(movieDetails);
   return (
     <div>
       <div>
