@@ -1,17 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import css from './movies.module.css';
 
 export const Movies = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [movies, setMovies] = useState(JSON.parse(localStorage.getItem('searchResults')) || []);
-  const history = useNavigate();
+  const [movies, setMovies] = useState(
+    JSON.parse(localStorage.getItem('searchResults')) || []
+  );
+  const navigate = useNavigate();
 
-  const handleInputChange = event => {
+  const handleInputChange = (event) => {
     setSearchQuery(event.target.value);
   };
 
-  const handleSubmit = async event => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
@@ -20,15 +22,12 @@ export const Movies = () => {
       );
       const data = await response.json();
       setMovies(data.results);
-      console.log(data.results);
       localStorage.setItem('searchResults', JSON.stringify(data.results));
-      history(`/movies`); // Redirect to the Movies component
+      navigate('/movies'); // Redirect to the Movies component
     } catch (error) {
       console.error('Error fetching movie data:', error);
     }
   };
-
- 
 
   return (
     <div>
@@ -45,11 +44,12 @@ export const Movies = () => {
       <div>
         <h2>Search Results:</h2>
         <ul className={css.listOfMovies}>
-          {movies.map(movie => (
+          {movies.map((movie) => (
             <li className={css.movieElement} key={movie.id}>
               <Link
                 to={{
                   pathname: `/movies/${movie.id}`,
+                  state: { movies }, // Pass the movies array to MoviesDetails component
                 }}
               >
                 {movie.title}

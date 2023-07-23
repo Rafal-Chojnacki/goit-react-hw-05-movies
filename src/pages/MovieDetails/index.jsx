@@ -116,7 +116,7 @@ export const MoviesDetails = () => {
           </li>
         </ul>
       </nav>
-      <Outlet />
+      <Outlet context={id}/>
     </div>
   );
 };
