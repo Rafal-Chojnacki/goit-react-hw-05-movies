@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, Link, useNavigate, useParams } from 'react-router-dom';
+import { useParams, useLocation, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import css from './movieDetails.module.css';
+
+
 
 export const MoviesDetails = () => {
   const { id } = useParams();
@@ -19,18 +22,15 @@ export const MoviesDetails = () => {
         console.error('Error fetching movie details:', error);
       }
     };
-
+    
     fetchMovieDetails();
   }, [id]);
 
+  
   const navigate = useNavigate();
 
   const goBack = () => {
-    if (location.state && location.state.movies) {
-      navigate(-1); // Navigate back
-    } else {
-      navigate('/movies'); // If no search results, go back to Movies component
-    }
+    navigate(-1);
   };
 
   const getYearFromDate = dateString => {
@@ -38,6 +38,7 @@ export const MoviesDetails = () => {
     return date.getFullYear();
   };
 
+  console.log(movieDetails);
   return (
     <div>
       <div>
@@ -88,3 +89,4 @@ export const MoviesDetails = () => {
     </div>
   );
 };
+
