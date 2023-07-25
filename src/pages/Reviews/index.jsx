@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useOutletContext } from 'react-router';
 import css from './reviews.module.css';
 
-export const Reviews = () => {
+const Reviews = () => {
   const [movieReviews, setMovieReviews] = useState([]);
   const id = useOutletContext();
 
@@ -14,7 +14,6 @@ export const Reviews = () => {
         );
         const data = await response.json();
         setMovieReviews(data.results);
-        console.log(data);
       } catch (error) {
         console.error('Error fetching movie reviews:', error);
       }
@@ -25,10 +24,10 @@ export const Reviews = () => {
 
   return (
     <div>
-      <div>
-        <h2>Reviews</h2>
-      </div>
       <div className={css.reviewsBox}>
+        <h2 className={css.reviewsTittle}>Reviews</h2>
+      </div>
+      <div>
         {movieReviews.length > 0 ? (
           movieReviews.map((review) => (
             <div key={review.id}>
@@ -49,3 +48,5 @@ export const Reviews = () => {
     </div>
   );
 };
+
+export default Reviews;

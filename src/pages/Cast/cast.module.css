@@ -2,6 +2,12 @@
     display: flex;
     flex-wrap: wrap;
     list-style: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.castTittle {
+    font-size: 40px;
 }
 .listOfActors {
     list-style: none;

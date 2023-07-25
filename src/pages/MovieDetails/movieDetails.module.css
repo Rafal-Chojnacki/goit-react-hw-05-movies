@@ -9,11 +9,22 @@
 }
 
 .goBackBtn {
-    margin-top: 20px;
-    margin-bottom: 5px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: rgb(49, 226, 43);
+    border-radius: 10px;
+
 }
 
+.goBackBtn:hover { 
+    cursor: pointer; 
+background-color: aqua;}
+
 .movieInfo {
+    font-size: 20px;
+    text-align: justify;
     color: black;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -23,4 +34,16 @@
     border-bottom: 3px solid gray;
     display: flex;
     flex-direction: column;
+}
+
+.addInfoBox {
+    list-style: none;
+    
+}
+
+.homeLink {
+    list-style: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    font-weight: 700;
 }

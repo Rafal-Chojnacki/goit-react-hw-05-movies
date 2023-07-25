@@ -15,7 +15,7 @@ const StyledLink = styled(NavLink)`
 export const MoviesDetails = () => {
   const { id } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
-  const location = useLocation(); // Get the location object
+  const location = useLocation();
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
