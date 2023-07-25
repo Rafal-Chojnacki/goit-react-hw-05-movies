@@ -5,9 +5,6 @@ import css from 'app.module.css';
 import { Home } from './Home';
 import { Movies } from './Movies';
 import { MoviesDetails } from './MovieDetails';
-// import { Cast } from './Cast';
-// import { Reviews } from './Reviews';
-
 const Cast = lazy(() => import('./Cast'));
 const Reviews = lazy(() => import('./Reviews'));
 

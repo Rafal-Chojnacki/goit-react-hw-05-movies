@@ -1,9 +1,14 @@
+.castTittleBox {
+    display: flex;
+    margin: auto;
+    justify-content: center;
+}
+
 .actorsBox {
     display: flex;
     flex-wrap: wrap;
     list-style: none;
     justify-content: center;
-    align-items: center;
 }
 
 .castTittle {

@@ -14,6 +14,7 @@ const Reviews = () => {
         );
         const data = await response.json();
         setMovieReviews(data.results);
+        console.log(data);
       } catch (error) {
         console.error('Error fetching movie reviews:', error);
       }
@@ -41,7 +42,7 @@ const Reviews = () => {
           ))
         ) : (
           <div>
-            <p>No reviews</p>
+            <p className={css.noReviews}>No reviews</p>
           </div>
         )}
       </div>

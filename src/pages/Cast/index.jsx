@@ -23,8 +23,8 @@ const Cast = () => {
   }, [id]);
 
   return (
-    <div className={css.actorsBox}>
-      <div >
+    <div>
+      <div className={css.castTittleBox}>
         <h2 className={css.castTittle}>Cast</h2>
       </div>
       <div className={css.actorsBox}>

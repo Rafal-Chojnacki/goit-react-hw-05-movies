@@ -38,15 +38,15 @@ export const Movies = () => {
             value={searchQuery}
             onChange={handleInputChange}
           />
-          <button type="submit">Search</button>
+          <button className={css.moviesBtn} type="submit">Search</button>
         </form>
       </div>
       <div>
-        <h2>Search Results:</h2>
+        <h2 className={css.moviesTittle}>Search Results:</h2>
         <ul className={css.listOfMovies}>
           {movies.map((movie) => (
-            <li className={css.movieElement} key={movie.id}>
-              <Link
+            <li className={css.moviesElement} key={movie.id}>
+              <Link className={css.moviesLink}
                 to={{
                   pathname: `/movies/${movie.id}`,
                   state: { movies }, // Pass the movies array to MoviesDetails component
