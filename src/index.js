@@ -5,7 +5,7 @@ import { App } from './pages/App';
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="goit-react-hw-05-movies">
       <Suspense fallback={<div>Loading...</div>}>
         <App />
       </Suspense>
